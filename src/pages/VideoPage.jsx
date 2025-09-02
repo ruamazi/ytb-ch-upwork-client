@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API_URL } from "./Home";
+import Spinner from "../components/Spinner";
 
 const VideoPage = () => {
  const { id } = useParams();
@@ -12,7 +13,7 @@ const VideoPage = () => {
    .then(setVideo);
  }, [id]);
 
- if (!video) return <p>Loading...</p>;
+ if (!video) return <Spinner size="medium" />;
 
  const videoId = new URL(video.link).searchParams.get("v");
 

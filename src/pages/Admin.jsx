@@ -7,7 +7,7 @@ const Admin = () => {
  const [link, setLink] = useState("");
 
  const loadVideos = () => {
-  fetch(`${API_URL}/api/videos`)
+  fetch(`${API_URL}/api/videos?limit=${100}`)
    .then((res) => res.json())
    .then((data) => setVideos(data.videos));
  };
