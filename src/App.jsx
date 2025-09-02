@@ -7,15 +7,20 @@ function App() {
  return (
   <div className="container mx-auto px-4">
    <header className="flex justify-between items-center py-8">
-    <h1 className="text-4xl font-bold">
-     <Link to="/">Yt-Channel</Link>
-    </h1>
+    <Link to="/">
+     <img src="./logo.jpg" alt="Logo" className="w-16 h-16" />
+    </Link>
+
     <nav>
-     <Link to="/admin" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+     <Link
+      to="/admin"
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+     >
       Admin
      </Link>
     </nav>
    </header>
+
    <main>
     <Routes>
      <Route path="/" element={<Home />} />
