@@ -49,7 +49,9 @@ const Home = () => {
          loading="lazy"
         />
         <div className="p-4">
-         <h3 className="font-bold text-lg truncate">{video.title}</h3>
+         <h3 className="font-bold text-sm truncate text-gray-800">
+          {video.title}
+         </h3>
         </div>
        </Link>
       );
