@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "./Home";
+import Spinner from "../components/Spinner";
 
 const Admin = () => {
  const [videos, setVideos] = useState([]);
  const [title, setTitle] = useState("");
  const [link, setLink] = useState("");
+ const [loading, setLoading] = useState(false);
 
- const loadVideos = () => {
-  fetch(`${API_URL}/api/videos?limit=${100}`)
-   .then((res) => res.json())
-   .then((data) => setVideos(data.videos));
+ const loadVideos = async () => {
+  setLoading(true);
+  try {
+   const resp = await fetch(`${API_URL}/api/videos?limit=${100}`);
+   const data = await resp.json();
+   setVideos(data.videos);
+   setLoading(false);
+  } catch (error) {
+   console.log(error);
+   setLoading(false);
+  }
  };
 
  useEffect(() => {
@@ -33,6 +42,10 @@ const Admin = () => {
   });
   loadVideos();
  };
+
+ if (loading) {
+  return <Spinner />;
+ }
 
  return (
   <div className="p-6">
